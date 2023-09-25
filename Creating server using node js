@@ -1,1 +1,93 @@
 
+ /*Http modules
+1. Http modules provide way to create server and handle http Request and REsponse 
+2. It expose various classes,functions and properties to work with http
+
+1.Create an HTTP server using `http.createServer()`
+2.listen to incoming request using the `server.listen()` method
+3.Handle incoming requests and send responses using the `request` and `response` object passed to the server’s request event
+4.Set headers on the response object using `response.setHeader()`
+5.Write data to the response object using `response.write()`
+6.End the response using `response.end()` 
+7.Send an HTTP request to a server using `http.request()`
+8.Receive a response from a server using the `response` event of the `http.clientRequest` object returned by `http.request()`
+
+
+*/
+
+ 
+const http=require('http');
+const { hostname } = require('os');
+const port=3000;
+const server=http.createServer((req,response)=>{
+   
+   //home page
+   //about page 
+   //Contact PAge
+   //Product Page
+   //REs..>Error
+
+   if(req.url=='/'){
+
+    response.statusCode=200;
+    response.setHeader('Content-Type','text/plain');
+    response.end('Welcome to NodeJs Server by Akash Chand');
+
+   }else if(req.url== '/about')
+   {
+    response.statusCode=200;
+    response.setHeader('Content-Type','text/plain');
+    response.end('About Page:');
+
+   }else if(req.url=='/contact')
+   {
+    response.statusCode=200;
+    response.setHeader('Content-Type','text/plain');
+    response.end('Contact Page');
+
+   }else if(req.url=='/product')
+   {
+    
+    const options={
+       hostname:'fakestoreapi.com',
+       path:'/products/1',
+       method:'GET'
+    }
+   //  how to request on different server
+   
+    const apiReq=http.request(options,(apiRes)=>{
+       apiRes.on("data",(data)=>{
+
+        response.statusCode=500;
+        response.setHeader('Content-Type','application/json');
+        response.end(data.toString());
+          
+        
+       })
+    });
+
+   apiReq.on("error",()=>{
+       console.log(e);
+   })
+   apiReq.end();
+
+   }else{
+
+    response.statusCode=500;
+    response.setHeader('Content-Type','text/plain');
+    response.end('Server Error');
+
+   }
+
+
+});
+server.listen(port,()=>{
+    console.log(`Server Running at ${hostname}:${port}`);
+})
+
+
+
+
+
+
+
