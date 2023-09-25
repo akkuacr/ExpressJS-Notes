@@ -1,0 +1,31 @@
+Different type of Node JS Frame works
+Detailed m pdf m h yha thod thoda pdenge
+
+NodeJs Frameworks
+1.Express.js
+2.Koa.js
+3.Nest.js
+4.Hapi.js
+5.Fastify.js
+6.Sails.js
+
+Express is fast,unopinionated ,minimalist web framework for Nodejs
+
+1.it provides two powerful tools Robust routing and Middlewares Function
+2.Express is an open -source backend web application Framework for building Restful Api's with NodeJs
+
+
+1.some commands of express
+`npm install express`
+
+2.importing
+`const express=require("express")`
+3.Creating an instance of Epress
+`const app=express()`
+
+
+it is modular and extensible
+It supports Powerful Routing and middleware Support
+
+
+
