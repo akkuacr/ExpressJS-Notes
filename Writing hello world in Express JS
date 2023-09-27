@@ -1,0 +1,34 @@
+//Installation wagera pdf se dekh lena
+
+
+//import express
+const express= require('express');
+
+//Creating instance of express
+const app=express();
+
+//Creating server
+app.get('/',(req,res)=>{
+    res.send('<h1>Hello World!</h1>');
+})
+app.get('/about',(req,res)=>{
+    res.send('About Page !');
+})
+app.get('/contact',(req,res)=>{
+    res.send('Contact!');
+})
+
+// main difference yeh get function hi leke ata h
+// because isme hum dekh skte h ki jo url ki information k liye hume if condition ki jrurat ni h jo ki nodejs m lgti thi 
+
+
+
+
+
+//defining port
+const port=3002;
+const HOSTNAME='My-host';
+app.listen(port,()=>{
+    console.log(`Server Running at ${HOSTNAME}:${port}` );
+})
+
